@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server Talk</title>
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/app2.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/factory.js"> </script>
+    <script src="js/controller.js"></script>
+</head>
+<body>
+    <div ng-app="itemapp" ng-controller="itemctrl">
+        <input type="text" placeholder="Type to Search" ng-model="search">
+        <button ng-click="loadData()">Load Data</button>
+        {{showme}}
+        <div ng-show="loading">
+            <img src="images/loading.gif">
+        </div>
+       <div ng-show="showme">
+       I.P Is {{data.data.ip}}  Country Is {{data.data.country_code}}
+      </div>
+    </div>
+</body>
+</html>

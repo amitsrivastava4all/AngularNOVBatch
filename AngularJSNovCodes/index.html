@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <script src="libs/angular.min.js"></script>
+</head>
+<!--
+ng-app is a predefine Directive in AngularJS
+ng-app it bootstrap the angularjs
+ng-app is only one for a one page
+
+ng-model it again a directive, it bind text box with model 
+--> 
+<body ng-app>
+    <table>
+        <tr>
+            <td><label for="">FirstName</label></td>
+            <td><input type="text" ng-model="firstname" placeholder="Type First Name Here"></td>
+        </tr>
+        <tr>
+            <td><label for="">LastName</label></td>
+            <td><input type="text" ng-model="lastname" placeholder="Type Last Name Here"></td>
+        </tr>
+        
+    </table>
+    <h1>Welcome {{firstname+lastname}}</h1>
+    <input type="text" ng-model="price1" ng-init="price1=0" placeholder="Type Price1">
+    <input type="text" ng-model="price2" ng-init="price2=0" placeholder="Type Price2">
+    <input type="text" value="{{price1*price2}}">
+    <!--
+    
+    
+    
+    -->
+    <input type="text" placeholder="Type to Sort" ng-model="fieldname">
+    <input type="checkbox" ng-model="sortorder">Asc/Desc
+    <input type="text" ng-model="object.name" placeholder="Type Name Here">
+    <ul ng-init='mydata=[{"id":1001,"name":"ram","profile":[{"id":1111,"name":"Admin","status":"Active"},{"id":1112,"name":"Guest","status":"Active"},{"id":1113,"name":"Normal","status":"DeActive"}],"image":"https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAS1AAAAJDU2NWJiNTIxLWY3MjMtNDA3NS04NzljLTVlOWQzODgxY2M1NA.jpg"},
+   {"id":1002,"name":"tom","image":"https://www.manchesterprofessionals.co.uk/v2/img/pic5.jpg"}, {"id":1003,"name":"mike","image":"https://media.glassdoor.com/people/sql/4146/lexisnexis-legal-and-professional-mike-walsh.png"}
+    ]'>
+        <li ng-repeat="data in mydata|filter:object|orderBy:fieldname:sortorder">
+<!--        {{data}}-->
+            {{data.id}} {{data.name}} <img ng-src ='{{data.image}}'>
+        </li>
+    </ul>
+    <ul>
+        <li ng-repeat="pr in mydata[0].profile">
+           {{pr.id}} {{pr.name}} {{pr.status}}
+            
+        </li>
+    </ul>
+</body>
+</html>

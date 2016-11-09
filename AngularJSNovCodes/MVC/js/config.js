@@ -1,0 +1,1 @@
+app2.constant("url","https://freegeoip.net/json/google.com");
