@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="libs/angular.min.js"></script>
+    <script>
+    var app = angular.module("testapp",[]);
+    app.controller("ctrl",function($scope){
+        $scope.roles={};
+        $scope.save=function(){
+            console.log($scope.roles);
+            for(var fields in $scope.roles){
+                console.log(fields);
+            }
+        }
+    })    
+    </script>
+</head>
+<body ng-app="testapp" >
+   <div ng-controller="ctrl">
+     Rec Save <input type="checkbox" ng-model="roles.rec.savecmd">
+    RecDraft  <input type="checkbox" ng-model="roles.rec.savedraft">
+      <br>
+      BDM Save <input type="checkbox" ng-model="roles.bdm.savecmd">
+    BDMDraft  <input type="checkbox" ng-model="roles.bdm.savedraft">
+       <br>
+       Search View <input type="checkbox" ng-model="roles.search.view">
+    Search Edit  <input type="checkbox" ng-model="roles.search.edit">
+    <button ng-click="save()">Save</button>
+   </div>
+    
+</body>
+</html>
