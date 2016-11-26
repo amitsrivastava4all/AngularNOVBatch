@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var app2 = angular.module("myapp2",[]);
+        app2.controller("myctrl3",function($scope,myfactory){
+            $scope.fullname="Mukesh Kumar";
+            myfactory.setFullName($scope.fullname);
+        });
+        app2.factory("myfactory",function(){
+            return object={
+                fullName:'',
+                setFullName:function(fullName){
+                this.fullName= fullName;
+            },
+                getFullName:function(){
+                    return this.fullName;
+                }
+            };
+        })
+        var app = angular.module("myapp",["myapp2"]);
+    // 1st way (inheritance)
+        app.controller("myctrl",function($scope,$rootScope,myfactory){
+            $rootScope.firstname ="amit "+myfactory.getFullName();
+        });
+        app.controller("myctrl2",function($scope){
+            $scope.lastname="srivastava";
+        });
+        
+    
+    </script>
+</head>
+<body ng-app="myapp">
+  <div ng-controller="myctrl3"></div>
+   <div ng-controller="myctrl">CTRL 1  {{firstname}} and {{lastname}}</div>
+   <div ng-controller="myctrl2">CTRL 2 {{firstname}} and {{lastname}}</div>
+<!--
+   <div ng-controller="myctrl">
+      <div ng-controller="myctrl2">
+          Inheritance {{firstname}} and {{lastname}}
+      </div>
+       
+   </div>
+-->
+    
+</body>
+</html>
